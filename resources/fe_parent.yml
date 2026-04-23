@@ -1,0 +1,20 @@
+resources:
+  jobs:
+    for_each_test_parent:
+      name: for_each_test_parent
+      tasks:
+        - task_key: parent_for_each
+          for_each_task:
+            inputs: "{{job.parameters.values}}"
+            task:
+              task_key: child_job
+              run_job_task:
+                job_id: 707704613848955
+                job_parameters:
+                  i: "{{input.i}}"
+                  j: "{{input.j}}"
+      queue:
+        enabled: true
+      parameters:
+        - name: values
+          default: '[{"i":5,"j":2},{"i":10,"j":4}]'
