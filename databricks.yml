@@ -25,7 +25,7 @@ targets:
     workspace:
       host: https://dbc-68909e8a-2b6b.cloud.databricks.com
     variables:
-      catalog: mono_testing
+      catalog: mono_testing_dev
       schema: ${workspace.current_user.short_name}
   prod:
     mode: production
@@ -34,7 +34,7 @@ targets:
       # We explicitly deploy to /Workspace/Users/michael.thomas@kanini.com to make sure we only have a single copy.
       root_path: /Workspace/Users/michael.thomas@kanini.com/.bundle/${bundle.name}/${bundle.target}
     variables:
-      catalog: mono_testing
+      catalog: mono_testing_prod
       schema: prod
     permissions:
       - user_name: michael.thomas@kanini.com
