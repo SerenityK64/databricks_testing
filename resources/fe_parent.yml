@@ -9,7 +9,7 @@ resources:
             task:
               task_key: child_job
               run_job_task:
-                job_id: 707704613848955
+                job_id: ${resources.jobs.fe_child.id}
                 job_parameters:
                   i: "{{input.i}}"
                   j: "{{input.j}}"
