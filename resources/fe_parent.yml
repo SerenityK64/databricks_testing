@@ -13,8 +13,23 @@ resources:
                 job_parameters:
                   i: "{{input.i}}"
                   j: "{{input.j}}"
+        - task_key: alert_task
+          depends_on:
+            - task_key: parent_for_each
+          notebook_task:
+            notebook_path: src/NB_Alert
+            source: GIT
+          environment_key: alert_env
+      git_source:
+        git_url: https://github.com/SerenityK64/databricks_testing.git
+        git_provider: gitHub
+        git_branch: main
       queue:
         enabled: true
       parameters:
         - name: values
           default: '[{"i":5,"j":2},{"i":10,"j":4}]'
+      environments:
+        - environment_key: alert_env
+          spec:
+            environment_version: "5"
